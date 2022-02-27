@@ -4,7 +4,7 @@ const router = Router()
 
 
 
- //localhost:3000
+ //localhost:3000/flights
 router.get('/',flightCtrl.index)
 /* GET flight listing. */
 
