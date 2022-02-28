@@ -16,6 +16,10 @@ const flightSchema = new Schema({
 		max: 9999
 	},departs: {
 		type: Date,
+		// default: function(){
+		// 	return new Date().currentDate()
+
+		// }
 	}
 });
 
