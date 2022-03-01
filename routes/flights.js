@@ -14,3 +14,6 @@ export {
 }
 // POST /flights
 router.post('/', flightCtrl.create)
+
+//locanhost: 3000/flights/:id
+router.delete('/:id',flightCtrl.delete)

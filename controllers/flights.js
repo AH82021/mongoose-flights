@@ -1,13 +1,11 @@
 import { Flight } from '../models/flight.js'
 
 function newFlight(req, res) {
- res.render('flights/new')
-// const newFlight = new Flight();
-// // Obtain the default date
-// const dt = newFlight.departs;
-// // Format the date for the value attribute of the input
-// const departsDate = dt.toISOString().slice(0, 16);
-// res.render('flights/new', {departsDate});
+res.render('flights/new',{
+  title : "Add Flight",
+  
+})
+
 }
 
 
@@ -28,18 +26,25 @@ function create(req, res) {
 
 }
 
-function index(req, res){
- Flight.find({},(err,flights)=>{
-res.render('flights/index',{
-  flights
-})
+function index(req, res) {
+  Flight.find({},(err,flights)=> {
+    res.render('flights/index', {
+    err:err,
+  flights : flights,
+    title : "All Flights"
+      })
   })
 }
-
+function deleteFlight(req, res) {
+  Flight.findByIdAndDelete(req.params.id, function(err, flight) {
+    res.redirect("/flights")
+  })
+}
 
 
 export {
   newFlight as new,
   create,
-  index
+  index,
+  deleteFlight as delete
 }
