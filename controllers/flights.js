@@ -41,10 +41,44 @@ function deleteFlight(req, res) {
   })
 }
 
+function show(req, res) {
+  Flight.findById(req.params.id, function (err, flight) {
+    res.render('flights/show', { 
+      title: 'Flight Detail', 
+      flight: flight,
+    })
+  })
+}
+
+
+
+
+function edit(req, res) {
+  console.log('working in edit function');
+  Flight.findById(req.params.id, function(err, flight) {
+    res.render('flights/edit', {
+      flight,
+      err,
+      title: "Edit Flight"
+    })
+  })
+}
+
+function update(req, res) {
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key]
+  }
+  Flight.findByIdAndUpdate(req.params.id, req.body, function(err, flight) {
+    res.redirect(`/movies/${flight._id}`)
+  })
+}
 
 export {
   newFlight as new,
   create,
   index,
-  deleteFlight as delete
+  deleteFlight as delete,
+  edit,
+  show,
+  update,
 }

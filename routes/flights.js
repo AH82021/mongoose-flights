@@ -17,3 +17,12 @@ router.post('/', flightCtrl.create)
 
 //locanhost: 3000/flights/:id
 router.delete('/:id',flightCtrl.delete)
+
+
+// localhost:3000/flights/:id/edit
+router.get("/:id/edit", flightCtrl.edit)
+
+router.get('/:id',flightCtrl.show)
+// localhost:3000/flights/:id
+router.put("/:id", flightCtrl.update)
+
